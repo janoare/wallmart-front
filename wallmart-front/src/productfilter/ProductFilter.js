@@ -16,12 +16,29 @@ class ProductFilter extends Component {
     handleFilterTextChange(e) {
         
         let filterText = e.target.value;
-        
-        if(filterText.length > 3) {
-            console.log("mayor a 3");
+        console.log(filterText.length);
+        if(filterText.length <= 3) {
+            if(!isNaN(filterText)) {
+                fetch(`http://localhost:8080/v1/products/search/by-id/${filterText}`, {
+                    method: 'get',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then(response => response.json())
+                .then((data) => {
+                    //console.log(JSON.stringify(data))
+                    this.setState({
+                        products: [data]
+                    });
+                })
+                .catch(err => {console.log(err)});
+            }
+        } else {
             fetch('http://localhost:8080/v1/products/search', {
                 method: 'post',
-                body: JSON.stringify({criteria: 'ab'}),
+                body: JSON.stringify({criteria: filterText}),
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',
@@ -29,36 +46,16 @@ class ProductFilter extends Component {
             })
             .then(response => response.json())
             .then((data) => {
-                //console.log(JSON.stringify(data))
                 this.setState({
-                    filterText: filterText,
                     products: data
                 });
             })
             .catch(err => {console.log(err)})
-        } else if(!isNaN(filterText)){
-            console.log(`es numero ${filterText} `);
-            fetch(`http://localhost:8080/v1/products/search/by-id/${filterText}`, {
-                method: 'get',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                },
-            })
-            .then(response => response.json())
-            .then((data) => {
-                //console.log(JSON.stringify(data))
-                this.setState({
-                    filterText: filterText,
-                    products: [data]
-                });
-            })
-            .catch(err => {console.log(err)})
-        }  else {
-            this.setState({
-                filterText: filterText
-            })
-        }         
+        }
+
+        this.setState({
+            filterText: filterText
+        });
     }
     
     render() {

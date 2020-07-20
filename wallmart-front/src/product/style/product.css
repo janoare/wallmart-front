@@ -1,0 +1,17 @@
+.product-div {
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px;
+}
+
+.separator-div {
+    width: 3px;
+    height: 65px;
+    float: left;
+    border: none;
+    margin: 0 0 0 -1px;
+}
+
+.discount {
+    color: red
+}
