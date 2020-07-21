@@ -5,7 +5,7 @@ Requerimientos
 - Node 8
 - Docker 
 
-#Para levantar localmente el proyecto ejecutar
+##Para levantar localmente el proyecto ejecutar
 
  ```sh
  $ npm install
@@ -16,7 +16,7 @@ Requerimientos
  ```
 Se levanta en [http://localhost:3000](http://localhost:3000)
 
-#Para levantar el docker
+##Para levantar el docker
 
 ```sh
  $ make create-image
