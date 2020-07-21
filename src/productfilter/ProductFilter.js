@@ -16,10 +16,9 @@ class ProductFilter extends Component {
     handleFilterTextChange(e) {
         
         let filterText = e.target.value;
-        console.log(filterText.length);
         if(filterText.length <= 3) {
             if(!isNaN(filterText)) {
-                fetch(`http://localhost:8080/v1/products/search/by-id/${filterText}`, {
+                fetch(`${this.props.base_url}/v1/products/search/by-id/${filterText}`, {
                     method: 'get',
                     headers: {
                         Accept: 'application/json',
@@ -28,7 +27,6 @@ class ProductFilter extends Component {
                 })
                 .then(response => response.json())
                 .then((data) => {
-                    //console.log(JSON.stringify(data))
                     this.setState({
                         products: [data]
                     });
@@ -36,7 +34,7 @@ class ProductFilter extends Component {
                 .catch(err => {console.log(err)});
             }
         } else {
-            fetch('http://localhost:8080/v1/products/search', {
+            fetch(`${this.props.base_url}/v1/products/search`, {
                 method: 'post',
                 body: JSON.stringify({criteria: filterText}),
                 headers: {
