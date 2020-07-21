@@ -3,7 +3,6 @@ import Product from '../product/Product'
 
 class ProductTable extends Component {
     render() {
-        const filterText = this.props.filterText;
         const rows = [];
         console.log(this.props.products);
         if(this.props.products) {

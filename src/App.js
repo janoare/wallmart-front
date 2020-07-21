@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import ProductFilter from '../src/productfilter/ProductFilter'
 
-
 let BASE_URL;
 if (process.env.BACKEND_HOST) 
   BASE_URL = process.env.BACKEND_HOST;

@@ -1,5 +1,5 @@
-import React, { Component, Text } from 'react';
-import { formatPrice, formatCurrencyString } from '../Helper';
+import React, { Component } from 'react';
+import { formatPrice } from '../Helper';
 import './style/product.css'
 
 class Product extends Component {
@@ -27,7 +27,7 @@ class Product extends Component {
             </p>
             <figure>
               <img
-                src={`http://${product.image}`}
+                src={`http://${product.image}`} alt="Product"
               />
             </figure>
 
